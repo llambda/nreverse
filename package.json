@@ -1,0 +1,19 @@
+{
+  "name": "nreverse",
+  "version": "1.0.0",
+  "description": "Node reverse geocoder example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llambda/nreverse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/llambda/nreverse/issues"
+  },
+  "homepage": "https://github.com/llambda/nreverse#readme"
+}
