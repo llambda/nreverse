@@ -1,8 +1,10 @@
 'use strict';
+console.time('load modules');
 const kdt = require('kdt');
 const csv = require('csv');
 const fs = require('fs');
 const coords = [];
+console.timeEnd('load modules');
 
 const distance = function (a, b) {
   return Math.pow(a.lat - b.lat, 2) +  Math.pow(a.long - b.long, 2);
@@ -22,10 +24,20 @@ parser.on('data', function (datum) {
 })
 
 parser.on('end', function () {
+  console.timeEnd('load cities.csv');
+
+  console.time('create kdtree');
   const tree = kdt.createKdTree(coords, distance, ['lat', 'long']);
+  console.timeEnd('create kdtree');
+
+  console.time('search tree');
   const nearest = tree.nearest({ lat: 44.9483, long: -93.34801 }, 1);
+  console.timeEnd('search tree');
+
   console.log(nearest.reverse());
+
 })
 
+console.time('load cities.csv');
 fs.createReadStream('./cities.csv')
 .pipe(parser);
