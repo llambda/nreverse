@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/llambda/nreverse#readme",
   "dependencies": {
-    "csv": "^0.4.6",
+    "csv": "    ^1.1.0",
     "kdt": "^0.1.0"
   }
 }
