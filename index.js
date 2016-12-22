@@ -30,12 +30,13 @@ parser.on('end', function () {
   const tree = kdt.createKdTree(coords, distance, ['lat', 'long']);
   console.timeEnd('create kdtree');
 
-  console.time('search tree');
-  const nearest = tree.nearest({ lat: 44.9483, long: -93.34801 }, 1);
-  console.timeEnd('search tree');
-
-  console.log(nearest.reverse());
-
+  
+  for (let i = 0; i < 5; i++) {
+    console.time('search tree');
+    const nearest = tree.nearest({ lat: 44.9483, long: -93.34801 }, 1);
+    console.timeEnd('search tree');
+    console.log(nearest.reverse());
+  }
 })
 
 console.time('load cities.csv');
