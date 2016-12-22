@@ -1,5 +1,6 @@
 'use strict';
 console.time('load modules');
+const v8 = require('v8');
 const kdt = require('kdt');
 const csv = require('csv');
 const fs = require('fs');
@@ -33,10 +34,15 @@ parser.on('end', function () {
   
   for (let i = 0; i < 5; i++) {
     console.time('search tree');
-    const nearest = tree.nearest({ lat: 44.9483, long: -93.34801 }, 1);
+    const nearest = tree.nearest({ lat: 44.9483 + i , long: -93.34801 + i}, 1);
     console.timeEnd('search tree');
     console.log(nearest.reverse());
   }
+
+  const stats = v8.getHeapStatistics();
+  Object.keys(stats).forEach(function (key) {
+    console.log(key + ' ' + Math.trunc(stats[key]/1024/1024) + 'mb');
+  });
 })
 
 console.time('load cities.csv');
